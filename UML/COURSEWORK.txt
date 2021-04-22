@@ -1,0 +1,13 @@
+@startuml
+Title CLASS DIAGRAM FOR The Physiotherapy & Sports Injury Centre (PSIC)
+'header: some header
+'footer: some footer
+legend
+By Alberto Rodríguez
+UML 2.0
+end legend
+'caption some caption
+
+
+
+@enduml
