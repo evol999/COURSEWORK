@@ -9,5 +9,47 @@ end legend
 'caption some caption
 
 
+package classes <<Rectangle>> {
+	class Appoinment {
+		String date
+		String time
+		String room
+		String patientName
+		Integer physicianID
+		set()
+		change()
+		cancel()
+		checkIn()
+	}
 
+	class User {
+		String fullName
+	}
+
+	class Members {
+		Integer idNumber
+		String address
+		String telephoneNumber
+	}
+
+	class ExpertiseType {
+	}
+
+	class Physician {
+		ExpertiseType[] Expertise
+	}
+	
+	class ExpertiseType {
+	
+	}
+	class Month {
+	
+	}
+
+	User <|-- Members
+	Members <|-- Physician
+	Physician *- ExpertiseType
+	Month *- Appoinment
+	
+}
 @enduml
