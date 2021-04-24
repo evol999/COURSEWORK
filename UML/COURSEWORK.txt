@@ -43,14 +43,24 @@ package classes <<Rectangle>> {
 	class ExpertiseType {
 	
 	}
-	class Month {
+	class TimeTable {
+		setSchedule()
+		isAvailable()
+		getAllAvailable()
+		setApointmentID()
+	}
 	
+	class TimeSlot{
+		String timeStampStart
+		String timeStampEnd
+		bool isAvailable
+		'String weekDay
 	}
 
 	User <|-- Members
 	Members <|-- Physician
 	Physician *- ExpertiseType
-	Month *- Appoinment
+	TimeTable *- Appoinment
 	
 }
 @enduml
