@@ -11,6 +11,7 @@ end legend
 
 package classes <<Rectangle>> {
 	class Appoinment {
+		Integer appID
 		String date
 		String time
 		String room
