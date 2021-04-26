@@ -16,6 +16,12 @@ public class BookingSystemApp {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Initialize Init = new Initialize();
+ //       if(!initialied)
+ //           initialize();
+ //       showMenu();
+    System.out.println("Hello World");
+        
     }
     
 }
