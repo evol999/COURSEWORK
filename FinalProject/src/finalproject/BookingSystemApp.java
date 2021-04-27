@@ -15,12 +15,14 @@ public class BookingSystemApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Physician physicians = new Physician();
+
         // TODO code application logic here
-        Initialize init = new Initialize();
-        if(!init.isOK())
-  //       showMenu();
-        System.out.println("There was a problem during initialization");
-        
+        Initialize init = new Initialize(physicians);
+        if (!init.isOK()) {
+            System.out.println("There was a problem during initialization");
+        }
+
     }
-    
+
 }
