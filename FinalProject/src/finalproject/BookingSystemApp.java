@@ -5,6 +5,8 @@
  */
 package finalproject;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author evol9
@@ -15,10 +17,10 @@ public class BookingSystemApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Physician physicians = new Physician();
+        ArrayList<Physician> physicians = new ArrayList<>();
 
         // TODO code application logic here
-        Initialize init = new Initialize(physicians);
+        Initialize init = new Initialize();
         if (!init.isOK()) {
             System.out.println("There was a problem during initialization");
         }
