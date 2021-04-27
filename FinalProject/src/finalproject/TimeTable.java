@@ -16,6 +16,7 @@ public class TimeTable {
     private ArrayList<TimeSlot> tsList;
 
     public TimeTable() {
+        this.tsList = new ArrayList<>();
     }
 
     public TimeTable(ArrayList<TimeSlot> tsList) {
