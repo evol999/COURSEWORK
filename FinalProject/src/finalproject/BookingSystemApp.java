@@ -17,7 +17,7 @@ public class BookingSystemApp {
     public static void main(String[] args) {
         // TODO code application logic here
         Initialize init = new Initialize();
-        if(!init.initOK)
+        if(!init.isOK())
   //       showMenu();
         System.out.println("There was a problem during initialization");
         

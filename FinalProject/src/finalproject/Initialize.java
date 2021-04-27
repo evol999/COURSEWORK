@@ -14,29 +14,64 @@ import java.util.Properties;
  * @author evol9
  */
 public class Initialize {
+
+    /**
+     * @return the initOK
+     */
+    public boolean isOK() {
+        return initOK;
+    }
+
+    /**
+     * @param initOK the initOK to set
+     */
+    private void setInitOK(boolean initOK) {
+        this.initOK = initOK;
+    }
+
+    /**
+     * @return the prop
+     */
+    public Properties getProp() {
+        return prop;
+    }
+
+    /**
+     * @param prop the prop to set
+     */
+    private void setProp(Properties prop) {
+        this.prop = prop;
+    }
     private boolean initOK;
+    private Properties prop;
 
     public Initialize() {
-        this.initOK = false;
-        this.initOK = loadFile("config.properties");
+        prop = new Properties();
+        boolean finalVal;
+        
+        finalVal = loadFile("config.properties");
+        finalVal &= loadPhysicians();
+        this.initOK = finalVal;
+        
         System.out.println("Hello from Init");
     }
     private boolean loadFile(String fileName){
         boolean retVal = false;
-        Properties prop = new Properties();
         try (InputStream input = Initialize.class.getClassLoader().getResourceAsStream(fileName)) {
             if(null == input)
                 System.out.println("Init file missing fatal error");
             else
                 retVal = true;
-        prop.load(input);
-        printProperties(prop);
+            getProp().load(input);
+        printProperties(getProp());
         } catch (IOException ex){
             ex.printStackTrace();
         }
-
-        
-
+        return retVal;
+    }
+    
+    private boolean loadPhysicians(){
+        boolean retVal = false;
         
         return retVal;
     }
