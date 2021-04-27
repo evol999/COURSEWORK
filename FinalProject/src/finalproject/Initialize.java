@@ -14,7 +14,7 @@ import java.util.Properties;
  * @author evol9
  */
 public class Initialize {
-    boolean initOK;
+    private boolean initOK;
 
     public Initialize() {
         this.initOK = false;
