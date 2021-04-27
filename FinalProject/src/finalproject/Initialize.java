@@ -7,6 +7,7 @@ package finalproject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Properties;
 
 /**
@@ -20,16 +21,32 @@ public class Initialize {
     }
     private boolean initOK;
     private Properties prop;
+    private ArrayList<Physician> physicians;
 
     public Initialize() {
         prop = new Properties();
         boolean finalVal;
+        physicians = new ArrayList<>();
 
         finalVal = loadFile("config.properties");
         finalVal &= loadPhysicians();
         this.initOK = finalVal;
 
         System.out.println("Hello from Init");
+    }
+
+    /**
+     * @return the physicians
+     */
+    public ArrayList<Physician> getPhysicians() {
+        return physicians;
+    }
+
+    /**
+     * @param physicians the physicians to set
+     */
+    public void setPhysicians(ArrayList<Physician> physicians) {
+        this.physicians = physicians;
     }
 
     /**
