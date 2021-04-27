@@ -48,35 +48,38 @@ public class Initialize {
     public Initialize() {
         prop = new Properties();
         boolean finalVal;
-        
+
         finalVal = loadFile("config.properties");
         finalVal &= loadPhysicians();
         this.initOK = finalVal;
-        
+
         System.out.println("Hello from Init");
     }
-    private boolean loadFile(String fileName){
+
+    private boolean loadFile(String fileName) {
         boolean retVal = false;
         try (InputStream input = Initialize.class.getClassLoader().getResourceAsStream(fileName)) {
-            if(null == input)
+            if (null == input) {
                 System.out.println("Init file missing fatal error");
-            else
+            } else {
                 retVal = true;
+            }
             getProp().load(input);
-        printProperties(getProp());
-        } catch (IOException ex){
+            printProperties(getProp());
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
         return retVal;
     }
-    
-    private boolean loadPhysicians(){
+
+    private boolean loadPhysicians() {
         boolean retVal = false;
         
         return retVal;
     }
+
     public static void printProperties(Properties prop) {
         prop.keySet().stream().map(key -> key + ": " + prop.getProperty(key.toString())).forEach(System.out::println);
     }
-            
+
 }

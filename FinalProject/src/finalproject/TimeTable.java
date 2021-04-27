@@ -13,6 +13,15 @@ import java.util.ArrayList;
  */
 public class TimeTable {
 
+    private ArrayList<TimeSlot> tsList;
+
+    public TimeTable() {
+    }
+
+    public TimeTable(ArrayList<TimeSlot> tsList) {
+        this.tsList = tsList;
+    }
+
     /**
      * @return the tsList
      */
@@ -27,10 +36,4 @@ public class TimeTable {
         this.tsList = tsList;
     }
 
-    public TimeTable(ArrayList<TimeSlot> tsList) {
-        this.tsList = tsList;
-    }
-    private ArrayList<TimeSlot> tsList;
-    
-    
 }
