@@ -15,6 +15,23 @@ import java.util.Properties;
  */
 public class Initialize {
 
+    public static void printProperties(Properties prop) {
+        prop.keySet().stream().map(key -> key + ": " + prop.getProperty(key.toString())).forEach(System.out::println);
+    }
+    private boolean initOK;
+    private Properties prop;
+
+    public Initialize() {
+        prop = new Properties();
+        boolean finalVal;
+
+        finalVal = loadFile("config.properties");
+        finalVal &= loadPhysicians();
+        this.initOK = finalVal;
+
+        System.out.println("Hello from Init");
+    }
+
     /**
      * @return the initOK
      */
@@ -42,19 +59,6 @@ public class Initialize {
     private void setProp(Properties prop) {
         this.prop = prop;
     }
-    private boolean initOK;
-    private Properties prop;
-
-    public Initialize() {
-        prop = new Properties();
-        boolean finalVal;
-
-        finalVal = loadFile("config.properties");
-        finalVal &= loadPhysicians();
-        this.initOK = finalVal;
-
-        System.out.println("Hello from Init");
-    }
 
     private boolean loadFile(String fileName) {
         boolean retVal = false;
@@ -74,12 +78,8 @@ public class Initialize {
 
     private boolean loadPhysicians() {
         boolean retVal = false;
-        
-        return retVal;
-    }
 
-    public static void printProperties(Properties prop) {
-        prop.keySet().stream().map(key -> key + ": " + prop.getProperty(key.toString())).forEach(System.out::println);
+        return retVal;
     }
 
 }
