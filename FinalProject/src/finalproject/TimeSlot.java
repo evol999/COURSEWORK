@@ -13,6 +13,10 @@ import java.sql.Timestamp;
  */
 public class TimeSlot {
 
+    private Timestamp timeStampStart;
+    private Timestamp timeStampEnd;
+    private Boolean isAvailable;
+
     public TimeSlot(Timestamp timeStampStart, Timestamp timeStampEnd, Boolean isAvailable) {
         this.timeStampStart = timeStampStart;
         this.timeStampEnd = timeStampEnd;
@@ -60,8 +64,5 @@ public class TimeSlot {
     public void setIsAvailable(Boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
-    private Timestamp timeStampStart;
-    private Timestamp timeStampEnd;
-    private Boolean isAvailable;
-    
+
 }
