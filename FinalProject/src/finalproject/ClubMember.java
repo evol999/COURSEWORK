@@ -49,7 +49,7 @@ public class ClubMember extends User{
     /**
      * @param telephoneNumber the telephoneNumber to set
      */
-    public void setTelephoneNumber(String telephoneNumber) {
+    public void setPhoneNumber(String telephoneNumber) {
         this.telephoneNumber = telephoneNumber;
     }
     private int idNumber;
