@@ -110,7 +110,7 @@ public class Initialize {
 //        every physician has 6 properties
         totalPhysicians = physicianKeyList.size() / 6;
 
-        for (int i = 0; i <= totalPhysicians; i++) {
+        for (int i = 0; i < totalPhysicians; i++) {
             sIndex = String.format(".%02d.", i + 1);
             keyString = "physicians" + sIndex;
             System.out.println(keyString);
