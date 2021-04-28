@@ -5,6 +5,7 @@
  */
 package finalproject;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -39,6 +40,33 @@ public class TimeTableTest {
     }
 
     /**
+     * Test of getBaseTimeStamp method, of class TimeTable.
+     */
+    @Test
+    public void testGetBaseTimeStamp() {
+        System.out.println("getBaseTimeStamp");
+        TimeTable instance = new TimeTable();
+        Timestamp expResult = null;
+        Timestamp result = instance.getBaseTimeStamp();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setBaseTimeStamp method, of class TimeTable.
+     */
+    @Test
+    public void testSetBaseTimeStamp() {
+        System.out.println("setBaseTimeStamp");
+        Timestamp baseTimeStamp = null;
+        TimeTable instance = new TimeTable();
+        instance.setBaseTimeStamp(baseTimeStamp);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
      * Test of getTsList method, of class TimeTable.
      */
     @Test
@@ -61,6 +89,19 @@ public class TimeTableTest {
         ArrayList<TimeSlot> tsList = null;
         TimeTable instance = new TimeTable();
         instance.setTsList(tsList);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of addTimeSlot method, of class TimeTable.
+     */
+    @Test
+    public void testAddTimeSlot() {
+        System.out.println("addTimeSlot");
+        String strValue = "";
+        TimeTable instance = new TimeTable();
+        instance.addTimeSlot(strValue);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
