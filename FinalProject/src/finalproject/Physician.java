@@ -13,19 +13,19 @@ import java.util.ArrayList;
  */
 public class Physician extends ClubMember {
 
-    private ArrayList<String> specialtyList;
+    private ArrayList<Speciality> specialtyList;
 
     /**
      * @return the specialtyList
      */
-    public ArrayList<String> getSpecialtyList() {
+    public ArrayList<Speciality> getSpecialtyList() {
         return specialtyList;
     }
 
     /**
      * @param specialtyList the specialtyList to set
      */
-    public void setSpecialtyList(ArrayList<String> specialtyList) {
+    public void setSpecialtyList(ArrayList<Speciality> specialtyList) {
         this.specialtyList = specialtyList;
     }
 }
