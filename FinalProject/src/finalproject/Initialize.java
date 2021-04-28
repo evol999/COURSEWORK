@@ -8,6 +8,7 @@ package finalproject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Properties;
 
 /**
@@ -30,7 +31,7 @@ public class Initialize {
 
         finalVal = loadFile("config.properties");
         finalVal &= loadPhysicians();
-        this.initOK = finalVal;
+        setInitOK(finalVal);
 
         System.out.println("Hello from Init");
     }
@@ -86,7 +87,7 @@ public class Initialize {
                 retVal = true;
             }
             getProp().load(input);
-            printProperties(getProp());
+//            printProperties(getProp());
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -95,6 +96,37 @@ public class Initialize {
 
     private boolean loadPhysicians() {
         boolean retVal = false;
+        Physician tempPhysician = new Physician();
+        int totalPhysicians = 0;
+        String sIndex;
+        String keyString;
+        ArrayList<String> physicianKeyList = new ArrayList<>();
+        for (Object key : getProp().keySet()) {
+            if (key.toString().startsWith("physicians")) {
+                physicianKeyList.add(key.toString());
+                System.out.println("Added: " + key);
+            }
+        }
+//        every physician has 6 properties
+        totalPhysicians = physicianKeyList.size() / 6;
+
+        for (int i = 0; i <= totalPhysicians; i++) {
+            sIndex = String.format(".%02d.", i + 1);
+            keyString = "physicians" + sIndex;
+            System.out.println(keyString);
+            tempPhysician.setIdNumber(Integer.parseInt(prop.getProperty(keyString + "id")));
+            tempPhysician.setFullName(prop.getProperty(keyString + "name"));
+            tempPhysician.setAddress(prop.getProperty(keyString + "address"));
+            tempPhysician.setPhoneNumber(prop.getProperty(keyString + "phonenumber"));
+
+//            tempPhysician.setAddress();
+        }
+
+        Collections.sort(physicianKeyList);
+        System.out.println(physicianKeyList);
+
+//        enum keys = this.prop.keys();
+        retVal = true;
 
         return retVal;
     }
