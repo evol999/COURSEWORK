@@ -38,7 +38,7 @@ public class User {
     public void setTimeTable(TimeTable timeTable) {
         this.timeTable = timeTable;
     }
-    private String fullName;
-    private TimeTable timeTable;
+    protected String fullName;
+    protected TimeTable timeTable;
 
 }
