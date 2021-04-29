@@ -124,9 +124,8 @@ public class Initialize {
             physicianList.add(tempPhysician);
         }
 
-        Collections.sort(physicianKeyList);
-        System.out.println(physicianKeyList);
-
+//        Collections.sort(physicianKeyList);
+//        System.out.println(physicianKeyList);
 //        enum keys = this.prop.keys();
         retVal = true;
 

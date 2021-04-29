@@ -32,13 +32,13 @@ public class TimeSlot implements Comparable<TimeSlot> {
         minute = Integer.parseInt(strValue.substring(6, 8));
 
         this.timeStampStart = getNewTimestamp(baseTimeStamp, daysToAdd, hour, minute);
-        System.out.println("timeStampStart: " + this.timeStampStart);
+//        System.out.println("timeStampStart: " + this.timeStampStart);
 
         hour = Integer.parseInt(strValue.substring(9, 11));
         minute = Integer.parseInt(strValue.substring(11, 13));
 
         this.timeStampEnd = getNewTimestamp(baseTimeStamp, daysToAdd, hour, minute);
-        System.out.println("timeStampEnd: " + this.timeStampEnd);
+//        System.out.println("timeStampEnd: " + this.timeStampEnd);
 
         this.isAvailable = Boolean.TRUE;
 

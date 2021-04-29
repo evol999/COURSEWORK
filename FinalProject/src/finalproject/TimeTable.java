@@ -89,20 +89,18 @@ public class TimeTable {
             addTimeSlot(timeSlot.trim());
         }
 
-        System.out.println("Unsorted array start:");
-        for (TimeSlot temp : tsList) {
-            System.out.println(temp.getTimeStampStart());
-        }
-        System.out.println("Unsorted array end");
-
+//        System.out.println("Unsorted array start:");
+//        for (TimeSlot temp : tsList) {
+//            System.out.println(temp.getTimeStampStart());
+//        }
+//        System.out.println("Unsorted array end");
         sortTimeSlots();
 
-        System.out.println("Sorted array start:");
-        for (TimeSlot temp : tsList) {
-            System.out.println(temp.getTimeStampStart());
-        }
-        System.out.println("Sorted array end");
-
+//        System.out.println("Sorted array start:");
+//        for (TimeSlot temp : tsList) {
+//            System.out.println(temp.getTimeStampStart());
+//        }
+//        System.out.println("Sorted array end");
     }
 
     private void sortTimeSlots() {
