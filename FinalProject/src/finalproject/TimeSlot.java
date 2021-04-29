@@ -27,7 +27,7 @@ public class TimeSlot implements Comparable<TimeSlot> {
         // set timeStampStart
         // split string
         // MON 0700 0800
-        daysToAdd = getDaysToAdd(Days.MON);
+        daysToAdd = getDaysToAdd(strValue.substring(0, 3));
         hour = Integer.parseInt(strValue.substring(4, 6));
         minute = Integer.parseInt(strValue.substring(6, 8));
 
@@ -86,10 +86,11 @@ public class TimeSlot implements Comparable<TimeSlot> {
         this.isAvailable = isAvailable;
     }
 
-    private int getDaysToAdd(Days day) {
+    private int getDaysToAdd(String day) {
         int retVal;
+        Days enumDay = Days.valueOf(day);
 
-        switch (day) {
+        switch (enumDay) {
             case MON:
                 retVal = 1;
                 break;
