@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author evol9
  */
-public class Speciality {
+public class Expertise {
 
     /**
      * @return the specialityName

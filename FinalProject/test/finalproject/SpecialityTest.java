@@ -39,12 +39,12 @@ public class SpecialityTest {
     }
 
     /**
-     * Test of getSpecialityName method, of class Speciality.
+     * Test of getSpecialityName method, of class Expertise.
      */
     @Test
     public void testGetSpecialityName() {
         System.out.println("getSpecialityName");
-        Speciality instance = new Speciality();
+        Expertise instance = new Expertise();
         String expResult = "";
         String result = instance.getSpecialityName();
         assertEquals(expResult, result);
@@ -53,25 +53,25 @@ public class SpecialityTest {
     }
 
     /**
-     * Test of setSpecialityName method, of class Speciality.
+     * Test of setSpecialityName method, of class Expertise.
      */
     @Test
     public void testSetSpecialityName() {
         System.out.println("setSpecialityName");
         String specialityName = "";
-        Speciality instance = new Speciality();
+        Expertise instance = new Expertise();
         instance.setSpecialityName(specialityName);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of getTreatments method, of class Speciality.
+     * Test of getTreatments method, of class Expertise.
      */
     @Test
     public void testGetTreatments() {
         System.out.println("getTreatments");
-        Speciality instance = new Speciality();
+        Expertise instance = new Expertise();
         ArrayList<String> expResult = null;
         ArrayList<String> result = instance.getTreatments();
         assertEquals(expResult, result);
@@ -80,13 +80,13 @@ public class SpecialityTest {
     }
 
     /**
-     * Test of setTreatments method, of class Speciality.
+     * Test of setTreatments method, of class Expertise.
      */
     @Test
     public void testSetTreatments() {
         System.out.println("setTreatments");
         ArrayList<String> treatments = null;
-        Speciality instance = new Speciality();
+        Expertise instance = new Expertise();
         instance.setTreatments(treatments);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

@@ -45,8 +45,8 @@ public class PhysicianTest {
     public void testGetSpecialtyList() {
         System.out.println("getSpecialtyList");
         Physician instance = new Physician();
-        ArrayList<Speciality> expResult = null;
-        ArrayList<Speciality> result = instance.getSpecialtyList();
+        ArrayList<Expertise> expResult = null;
+        ArrayList<Expertise> result = instance.getExpertiseList();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -58,9 +58,9 @@ public class PhysicianTest {
     @Test
     public void testSetSpecialtyList() {
         System.out.println("setSpecialtyList");
-        ArrayList<Speciality> specialtyList = null;
+        ArrayList<Expertise> specialtyList = null;
         Physician instance = new Physician();
-        instance.setSpecialtyList(specialtyList);
+        instance.setExpertiseList(specialtyList);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

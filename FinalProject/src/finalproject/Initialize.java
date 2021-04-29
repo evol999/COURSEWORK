@@ -101,7 +101,6 @@ public class Initialize {
         String sIndex;
         String keyString;
         ArrayList<String> physicianKeyList = new ArrayList<>();
-        ArrayList<Physician> physicianList = new ArrayList<>();
         for (Object key : getProp().keySet()) {
             if (key.toString().startsWith("physicians")) {
                 physicianKeyList.add(key.toString());
