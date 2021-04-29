@@ -12,7 +12,7 @@ import java.util.Calendar;
  *
  * @author evol9
  */
-public class TimeSlot {
+public class TimeSlot implements Comparable<TimeSlot> {
 
     private Timestamp timeStampStart;
     private Timestamp timeStampEnd;
@@ -130,6 +130,20 @@ public class TimeSlot {
         return retTimestamp;
 //        return new Timestamp(calTimestamp.getTime().getTime());
 
+    }
+
+    @Override
+    public int compareTo(TimeSlot o) {
+        int retVal = 0;
+
+        if (this.timeStampStart.before(o.timeStampStart)) {
+            retVal = -1;
+        }
+        if (this.timeStampStart.after(o.timeStampStart)) {
+            retVal = 1;
+        }
+
+        return retVal;
     }
 
     public enum Days {
