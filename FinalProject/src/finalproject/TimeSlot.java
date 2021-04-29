@@ -42,7 +42,22 @@ public class TimeSlot implements Comparable<TimeSlot> {
 //        System.out.println("timeStampEnd: " + this.timeStampEnd);
 
         this.isAvailable = Boolean.TRUE;
+        this.isConsultation = Boolean.FALSE;
 
+    }
+
+    /**
+     * @return the isConsultation
+     */
+    public Boolean getIsConsultation() {
+        return isConsultation;
+    }
+
+    /**
+     * @param isConsultation the isConsultation to set
+     */
+    public void setIsConsultation(Boolean isConsultation) {
+        this.isConsultation = isConsultation;
     }
 
     /**
