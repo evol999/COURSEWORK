@@ -120,8 +120,9 @@ public class Initialize {
             tempPhysician.setFullName(prop.getProperty(keyString + "name"));
             tempPhysician.setAddress(prop.getProperty(keyString + "address"));
             tempPhysician.setPhoneNumber(prop.getProperty(keyString + "phonenumber"));
-            tempPhysician.parseTimeSlots(prop.getProperty(keyString + "hours"));  //            tempPhysician.setAddress();
-            physicianList.add(tempPhysician);
+            tempPhysician.parseTimeSlots(prop.getProperty(keyString + "consultation"));
+            tempPhysician.parseExpertise(prop.getProperty(keyString + "expertise"));
+            physicians.add(tempPhysician);
         }
 
 //        Collections.sort(physicianKeyList);
