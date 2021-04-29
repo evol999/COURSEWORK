@@ -96,11 +96,12 @@ public class Initialize {
 
     private boolean loadPhysicians() {
         boolean retVal = false;
-        Physician tempPhysician = new Physician();
+        Physician tempPhysician;
         int totalPhysicians = 0;
         String sIndex;
         String keyString;
         ArrayList<String> physicianKeyList = new ArrayList<>();
+        ArrayList<Physician> physicianList = new ArrayList<>();
         for (Object key : getProp().keySet()) {
             if (key.toString().startsWith("physicians")) {
                 physicianKeyList.add(key.toString());
@@ -111,6 +112,7 @@ public class Initialize {
         totalPhysicians = physicianKeyList.size() / 6;
 
         for (int i = 0; i < totalPhysicians; i++) {
+            tempPhysician = new Physician();
             sIndex = String.format(".%02d.", i + 1);
             keyString = "physicians" + sIndex;
             System.out.println(keyString);
@@ -119,6 +121,7 @@ public class Initialize {
             tempPhysician.setAddress(prop.getProperty(keyString + "address"));
             tempPhysician.setPhoneNumber(prop.getProperty(keyString + "phonenumber"));
             tempPhysician.parseTimeSlots(prop.getProperty(keyString + "hours"));  //            tempPhysician.setAddress();
+            physicianList.add(tempPhysician);
         }
 
         Collections.sort(physicianKeyList);
