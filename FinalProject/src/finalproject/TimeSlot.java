@@ -6,6 +6,7 @@
 package finalproject;
 
 import java.sql.Timestamp;
+import java.util.Calendar;
 
 /**
  *
@@ -17,10 +18,30 @@ public class TimeSlot {
     private Timestamp timeStampEnd;
     private Boolean isAvailable;
 
-    public TimeSlot(Timestamp timeStampStart, Timestamp timeStampEnd, Boolean isAvailable) {
-        this.timeStampStart = timeStampStart;
-        this.timeStampEnd = timeStampEnd;
-        this.isAvailable = isAvailable;
+    TimeSlot(Timestamp baseTimeStamp, String strValue) {
+        int hour;
+        int minute;
+        int daysToAdd;
+
+//        System.out.println("strValue: " + strValue);
+        // set timeStampStart
+        // split string
+        // MON 0700 0800
+        daysToAdd = getDaysToAdd(Days.MON);
+        hour = Integer.parseInt(strValue.substring(4, 6));
+        minute = Integer.parseInt(strValue.substring(6, 8));
+
+        this.timeStampStart = getNewTimestamp(baseTimeStamp, daysToAdd, hour, minute);
+        System.out.println("timeStampStart: " + this.timeStampStart);
+
+        hour = Integer.parseInt(strValue.substring(9, 11));
+        minute = Integer.parseInt(strValue.substring(11, 13));
+
+        this.timeStampEnd = getNewTimestamp(baseTimeStamp, daysToAdd, hour, minute);
+        System.out.println("timeStampEnd: " + this.timeStampEnd);
+
+        this.isAvailable = Boolean.TRUE;
+
     }
 
     /**
@@ -65,4 +86,59 @@ public class TimeSlot {
         this.isAvailable = isAvailable;
     }
 
+    private int getDaysToAdd(Days day) {
+        int retVal;
+
+        switch (day) {
+            case MON:
+                retVal = 1;
+                break;
+            case TUE:
+                retVal = 2;
+                break;
+            case WED:
+                retVal = 3;
+                break;
+            case THU:
+                retVal = 4;
+                break;
+            case FRI:
+                retVal = 5;
+                break;
+            case SAT:
+                retVal = 6;
+                break;
+            case SUN:
+            default:
+                retVal = 0;
+                break;
+        }
+        return retVal;
+    }
+
+    private Timestamp getNewTimestamp(Timestamp baseTimeStamp, int daysToAdd, int hour, int minute) {
+
+        Timestamp retTimestamp;
+        Calendar calTimestamp = Calendar.getInstance();
+        calTimestamp.setTime(baseTimeStamp);
+        calTimestamp.add(Calendar.DAY_OF_WEEK, daysToAdd);
+        calTimestamp.set(Calendar.HOUR_OF_DAY, hour);
+        calTimestamp.set(Calendar.MINUTE, minute);
+//        baseTimeStamp.setTime(calTimestamp.getTime().getTime());
+        retTimestamp = new Timestamp(calTimestamp.getTime().getTime());
+        System.out.println("retTimestamp: " + retTimestamp);
+        return retTimestamp;
+//        return new Timestamp(calTimestamp.getTime().getTime());
+
+    }
+
+    public enum Days {
+        SUN,
+        MON,
+        TUE,
+        WED,
+        THU,
+        FRI,
+        SAT
+    }
 }

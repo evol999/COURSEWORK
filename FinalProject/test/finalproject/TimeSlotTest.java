@@ -119,4 +119,25 @@ public class TimeSlotTest {
         fail("The test case is a prototype.");
     }
 
+    /**
+     * Test of getNewTimestamp method, of class TimeSlot.
+     */
+    @Test
+    public void testGetTimestamp() {
+        System.out.println("getTimestamp");
+//        Timestamp baseTimeStamp = null;
+        TimeTable table = new TimeTable();
+        int daysToAdd = 2;
+        int hour = 7;
+        int minute = 15;
+        TimeSlot instance = new TimeSlot(table.getBaseTimeStamp(), "MON 0700 0800");
+//        Timestamp expResult = null;
+//        Timestamp result = instance.getNewTimestamp(table.getBaseTimeStamp(), daysToAdd, hour, minute);
+//        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        System.out.println("Base date: " + table.getBaseTimeStamp().toString());
+//        System.out.println("result: " + result.toString());
+        fail("The test case is a prototype.");
+    }
+
 }

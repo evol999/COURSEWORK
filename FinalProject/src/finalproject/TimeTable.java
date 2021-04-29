@@ -6,6 +6,9 @@
 package finalproject;
 
 import java.sql.Timestamp;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 
 /**
@@ -19,11 +22,12 @@ public class TimeTable {
 
     public TimeTable() {
         this.tsList = new ArrayList<>();
-        this.baseTimeStamp = new Timestamp(0);
+        this.setBaseTimeStamp();
     }
 
     public TimeTable(ArrayList<TimeSlot> tsList) {
         this.tsList = tsList;
+        this.setBaseTimeStamp();
     }
 
     /**
@@ -41,6 +45,21 @@ public class TimeTable {
     }
 
     /**
+     * @param baseTimeStamp the baseTimeStamp to set
+     */
+    private void setBaseTimeStamp() {
+        // current time
+        Timestamp tempTimestamp = new Timestamp(System.currentTimeMillis());
+        // finds next sunday
+        LocalDate currentDate = tempTimestamp.toLocalDateTime().toLocalDate();
+        LocalDate nextSunday = currentDate.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
+        System.out.println("currentDate: " + currentDate);
+        System.out.println("nextSunday: " + nextSunday);
+        this.baseTimeStamp = Timestamp.valueOf(nextSunday.atStartOfDay());
+        System.out.println(this.baseTimeStamp);
+    }
+
+    /**
      * @return the tsList
      */
     public ArrayList<TimeSlot> getTsList() {
@@ -55,9 +74,8 @@ public class TimeTable {
     }
 
     public void addTimeSlot(String strValue) {
-        // MON 0700 0800
-
-        TimeSlot tempTimeSlot = new TimeSlot(baseTimeStamp, baseTimeStamp, Boolean.TRUE);
+        // System.out.println("TimeStamp: " + this.baseTimeStamp.toString());
+        TimeSlot tempTimeSlot = new TimeSlot(this.baseTimeStamp, strValue);
         tsList.add(tempTimeSlot);
         // convert to array organize
         // convert to arraylist
@@ -65,15 +83,4 @@ public class TimeTable {
         // Add for four weeks
 
     }
-
-    public enum Days {
-        SUN,
-        MON,
-        TUE,
-        WED,
-        THU,
-        FRI,
-        SAT
-    }
-
 }
