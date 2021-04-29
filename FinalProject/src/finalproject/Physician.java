@@ -13,7 +13,22 @@ import java.util.ArrayList;
  */
 public class Physician extends ClubMember {
 
+    /**
+     * @return the room
+     */
+    public String getRoom() {
+        return room;
+    }
+
+    /**
+     * @param room the room to set
+     */
+    public void setRoom(String room) {
+        this.room = room;
+    }
+
     private ArrayList<Expertise> expertiseList;
+    private String room;
 
     public Physician() {
         expertiseList = new ArrayList<Expertise>();
