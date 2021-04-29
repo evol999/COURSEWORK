@@ -17,6 +17,7 @@ public class TimeSlot implements Comparable<TimeSlot> {
     private Timestamp timeStampStart;
     private Timestamp timeStampEnd;
     private Boolean isAvailable;
+    private Boolean isConsultation;
 
     TimeSlot(Timestamp baseTimeStamp, String strValue) {
         int hour;
