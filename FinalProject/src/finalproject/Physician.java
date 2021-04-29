@@ -28,4 +28,8 @@ public class Physician extends ClubMember {
     public void setSpecialtyList(ArrayList<Speciality> specialtyList) {
         this.specialtyList = specialtyList;
     }
+
+    void parseTimeSlots(String property) {
+        this.timeTable.parseTimeSlots(property);
+    }
 }

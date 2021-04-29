@@ -11,6 +11,13 @@ package finalproject;
  */
 public class User {
 
+    protected String fullName;
+    protected TimeTable timeTable;
+
+    public User() {
+        timeTable = new TimeTable();
+    }
+
     /**
      * @return the fullName
      */
@@ -38,7 +45,5 @@ public class User {
     public void setTimeTable(TimeTable timeTable) {
         this.timeTable = timeTable;
     }
-    protected String fullName;
-    protected TimeTable timeTable;
 
 }

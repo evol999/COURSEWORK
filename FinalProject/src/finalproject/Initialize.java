@@ -118,8 +118,7 @@ public class Initialize {
             tempPhysician.setFullName(prop.getProperty(keyString + "name"));
             tempPhysician.setAddress(prop.getProperty(keyString + "address"));
             tempPhysician.setPhoneNumber(prop.getProperty(keyString + "phonenumber"));
-
-//            tempPhysician.setAddress();
+            tempPhysician.parseTimeSlots(prop.getProperty(keyString + "hours"));  //            tempPhysician.setAddress();
         }
 
         Collections.sort(physicianKeyList);

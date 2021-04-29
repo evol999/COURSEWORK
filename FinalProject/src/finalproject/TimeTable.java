@@ -10,6 +10,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -77,10 +78,39 @@ public class TimeTable {
         // System.out.println("TimeStamp: " + this.baseTimeStamp.toString());
         TimeSlot tempTimeSlot = new TimeSlot(this.baseTimeStamp, strValue);
         tsList.add(tempTimeSlot);
-        // convert to array organize
-        // convert to arraylist
-        // set as availbe slot
         // Add for four weeks
 
+    }
+
+    void parseTimeSlots(String property) {
+        String[] timeSlots = property.split(";");
+        for (String timeSlot : timeSlots) {
+            System.out.println(timeSlot);
+            addTimeSlot(timeSlot.trim());
+        }
+
+        System.out.println("Unsorted array start:");
+        for (TimeSlot temp : tsList) {
+            System.out.println(temp.getTimeStampStart());
+        }
+        System.out.println("Unsorted array end");
+
+        sortTimeSlots();
+
+        System.out.println("Sorted array start:");
+        for (TimeSlot temp : tsList) {
+            System.out.println(temp.getTimeStampStart());
+        }
+        System.out.println("Sorted array end");
+
+    }
+
+    private void sortTimeSlots() {
+        // convert to array organize
+        //        Object[] arrayTimeSlots = tsList.toArray();
+        Collections.sort(tsList);
+
+        // convert to arraylist
+        // set as availbe slot
     }
 }
