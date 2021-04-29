@@ -13,6 +13,13 @@ import java.util.ArrayList;
  */
 public class Expertise {
 
+    private String specialityName;
+    private ArrayList<String> treatments;
+
+    public Expertise() {
+        treatments = new ArrayList<>();
+    }
+
     /**
      * @return the specialityName
      */
@@ -41,7 +48,8 @@ public class Expertise {
         this.treatments = treatments;
     }
 
-    private String specialityName;
-    private ArrayList<String> treatments;
+    void addTreatment(String treatment) {
+        this.treatments.add(treatment);
+    }
 
 }

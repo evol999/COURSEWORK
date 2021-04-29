@@ -18,13 +18,26 @@ public class BookingSystemApp {
      */
     public static void main(String[] args) {
         ArrayList<Physician> physicians = new ArrayList<>();
+        ArrayList<Expertise> tempExpertise = new ArrayList<>();
+        ArrayList<String> treatments = new ArrayList<>();
 
         // TODO code application logic here
         Initialize init = new Initialize();
         if (!init.isOK()) {
             System.out.println("There was a problem during initialization");
         }
-
+        UserInput uI = new UserInput();
+        uI.loop();
+//        physicians = init.getPhysicians();
+//        for (Physician test : physicians) {
+//            System.out.println("Name: " + test.fullName);
+//            tempExpertise = test.getExpertiseList();
+//            for (Expertise lineline : tempExpertise) {
+//                System.out.println("Speciality: " + lineline.getSpecialityName());
+//                for (String treatment : lineline.getTreatments()) {
+//                    System.out.println("Treatment: " + treatment);
+//                }
+//            }
+//        }
     }
-
 }

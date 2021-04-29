@@ -38,23 +38,25 @@ public class Physician extends ClubMember {
     }
 
     void parseExpertise(String property) {
-        int indexOfTreatments;
 //        Physioterapy["Neural mobilisation", "Massage"]; Osteopathy["Mobilisation of the spine and joints", "Pool rehabilitation"]
+        int indexTreatments;
+        int indexEndTreatments;
         String[] expertises = property.split(";");
         for (String expertise : expertises) {
-            System.out.println(expertise);
+            Expertise tempExpertise = new Expertise();
+            System.out.println("Expertise to add: " + expertise.trim());
 //            checks for treatments
-            indexOfTreatments = expertise.trim().indexOf('[');
-            if (-1 == indexOfTreatments) // No treatments
+            indexTreatments = expertise.trim().indexOf('[');
+            if (-1 == indexTreatments) // No treatments
             {
-                addExpertise(expertise.trim());
+                tempExpertise.setSpecialityName(expertise.trim());
             } else // there are treatments
             {
-                addExpertise(expertise.trim().substring(0, indexOfTreatments));
-
-//                addTreatments();
+                tempExpertise.setSpecialityName(expertise.trim().substring(0, indexTreatments));
+                indexEndTreatments = expertise.trim().indexOf(']');
+                addTreatments(tempExpertise, expertise.trim().substring(indexTreatments + 1, indexEndTreatments));
             }
-
+            expertiseList.add(tempExpertise);
         }
 
 //        System.out.println("Unsorted array start:");
@@ -70,11 +72,11 @@ public class Physician extends ClubMember {
 //        System.out.println("Sorted array end");
     }
 
-    private void addExpertise(String substring) {
-        Expertise tempExpertise = new Expertise();
-
-        System.out.println("Expertise added: " + substring);
-        tempExpertise.setSpecialityName(substring);
-        expertiseList.add(tempExpertise);
+    private void addTreatments(Expertise tempExpertise, String substring) {
+        String[] treatments = substring.split(",");
+        for (String treatment : treatments) {
+            tempExpertise.addTreatment(treatment.trim());
+            System.out.println("added treatment: " + treatment.trim());
+        }
     }
 }
