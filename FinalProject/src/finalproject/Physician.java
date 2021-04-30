@@ -15,6 +15,17 @@ import java.util.ArrayList;
  */
 public class Physician extends ClubMember {
 
+    private ArrayList<Expertise> eExpertiseList;
+    private ArrayList<TimeSlot> tsFreeTime;
+    private ArrayList<TimeSlot> tsConsultationHours;
+    private String room;
+
+    public Physician() {
+        eExpertiseList = new ArrayList<>();
+        tsFreeTime = new ArrayList<>();
+        tsConsultationHours = new ArrayList<>();
+    }
+
     /**
      * @return the tsFreeTime
      */
@@ -27,15 +38,6 @@ public class Physician extends ClubMember {
      */
     public void setTsFreeTime(ArrayList<TimeSlot> tsFreeTime) {
         this.tsFreeTime = tsFreeTime;
-    }
-
-    private ArrayList<Expertise> eExpertiseList;
-    private ArrayList<TimeSlot> tsFreeTime;
-    private String room;
-
-    public Physician() {
-        eExpertiseList = new ArrayList<>();
-        tsFreeTime = new ArrayList<>();
     }
 
     /**
@@ -67,7 +69,7 @@ public class Physician extends ClubMember {
     }
 
     void parseTimeSlots(String property) {
-        this.timeTable.parseTimeSlots(property);
+        this.tTappointments.parseTimeSlots(property);
     }
 
     void parseExpertise(String property) {
@@ -138,7 +140,7 @@ public class Physician extends ClubMember {
                 slots.add(tempString);
             }
             for (String slot : slots) {
-                this.timeTable.addTimeSlot(slot);
+                this.tTappointments.addTimeSlot(slot);
             }
         }
     }
@@ -151,8 +153,8 @@ public class Physician extends ClubMember {
         for (String strTimeSlot : timeSlots) {
 //            System.out.println(strTimeSlot);
 
-            for (TimeSlot timeSlot : this.timeTable.getTsList()) {
-                slotTimeStamp = timeSlot.calcTimestamp(timeTable.getBaseTimeStamp(), property);
+            for (TimeSlot timeSlot : this.tTappointments.getTsList()) {
+                slotTimeStamp = timeSlot.calcTimestamp(tTappointments.getBaseTimeStamp(), property);
                 if (timeSlot.getTimeStampStart().equals(slotTimeStamp)) {
                     System.out.println("found");
                 }

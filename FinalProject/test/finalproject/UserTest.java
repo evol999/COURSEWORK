@@ -72,7 +72,7 @@ public class UserTest {
         System.out.println("getTimeTable");
         User instance = new User();
         TimeTable expResult = null;
-        TimeTable result = instance.getTimeTable();
+        TimeTable result = instance.gettTappointments();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -86,7 +86,7 @@ public class UserTest {
         System.out.println("setTimeTable");
         TimeTable timeTable = null;
         User instance = new User();
-        instance.setTimeTable(timeTable);
+        instance.settTappointments(timeTable);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

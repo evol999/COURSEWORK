@@ -12,10 +12,10 @@ package finalproject;
 public class User {
 
     protected String fullName;
-    protected TimeTable timeTable;
+    protected TimeTable tTappointments;
 
     public User() {
-        timeTable = new TimeTable();
+        tTappointments = new TimeTable();
     }
 
     /**
@@ -33,17 +33,17 @@ public class User {
     }
 
     /**
-     * @return the timeTable
+     * @return the tTappointments
      */
-    public TimeTable getTimeTable() {
-        return timeTable;
+    public TimeTable gettTappointments() {
+        return tTappointments;
     }
 
     /**
-     * @param timeTable the timeTable to set
+     * @param tTappointments the tTappointments to set
      */
-    public void setTimeTable(TimeTable timeTable) {
-        this.timeTable = timeTable;
+    public void settTappointments(TimeTable tTappointments) {
+        this.tTappointments = tTappointments;
     }
 
 }
