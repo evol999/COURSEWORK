@@ -101,6 +101,9 @@ public class Initialize {
         String sIndex;
         String keyString;
         ArrayList<String> physicianKeyList = new ArrayList<>();
+        String workingHours;
+
+        workingHours = prop.getProperty("workinghours");
         for (Object key : getProp().keySet()) {
             if (key.toString().startsWith("physicians")) {
                 physicianKeyList.add(key.toString());
@@ -112,6 +115,7 @@ public class Initialize {
 
         for (int i = 0; i < totalPhysicians; i++) {
             tempPhysician = new Physician();
+            tempPhysician.populateWeek(workingHours);
             sIndex = String.format(".%02d.", i + 1);
             keyString = "physicians" + sIndex;
             System.out.println(keyString);
