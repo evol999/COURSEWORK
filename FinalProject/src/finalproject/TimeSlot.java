@@ -28,15 +28,15 @@ public class TimeSlot implements Comparable<TimeSlot> {
         // set timeStampStart
         // split string
         // MON 0700 0800
-        daysToAdd = getDaysToAdd(strValue.substring(0, 3));
-        hour = Integer.parseInt(strValue.substring(4, 6));
-        minute = Integer.parseInt(strValue.substring(6, 8));
+        daysToAdd = getDaysToAdd(strValue.trim().substring(0, 3));
+        hour = Integer.parseInt(strValue.trim().substring(4, 6));
+        minute = Integer.parseInt(strValue.trim().substring(6, 8));
 
         this.timeStampStart = calcNewTimestamp(baseTimeStamp, daysToAdd, hour, minute);
         System.out.println("timeStampStart: " + this.timeStampStart);
 
-        hour = Integer.parseInt(strValue.substring(9, 11));
-        minute = Integer.parseInt(strValue.substring(11, 13));
+        hour = Integer.parseInt(strValue.trim().substring(9, 11));
+        minute = Integer.parseInt(strValue.trim().substring(11, 13));
 
         this.timeStampEnd = calcNewTimestamp(baseTimeStamp, daysToAdd, hour, minute);
         System.out.println("timeStampEnd: " + this.timeStampEnd);
