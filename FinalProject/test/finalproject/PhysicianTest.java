@@ -152,7 +152,7 @@ public class PhysicianTest {
     public void testPopulateWeek() {
         System.out.println("populateWeek");
         Physician instance = new Physician();
-        instance.populateWeek("0900 1700");
+//        instance.populateWeek("0900 1700");
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -165,8 +165,62 @@ public class PhysicianTest {
         System.out.println("setConsultationHours");
         String property = "MON 0900 1000; TUE 1000 1100";
         Physician instance = new Physician();
-        instance.populateWeek("0900 1700");
+//        instance.populateWeek("0900 1700");
         instance.setConsultationHours(property);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getTsFreeTime method, of class Physician.
+     */
+    @Test
+    public void testGetTsFreeTime() {
+        System.out.println("getTsFreeTime");
+        Physician instance = new Physician();
+        ArrayList<TimeSlot> expResult = null;
+        ArrayList<TimeSlot> result = instance.getTsFreeTime();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setTsFreeTime method, of class Physician.
+     */
+    @Test
+    public void testSetTsFreeTime() {
+        System.out.println("setTsFreeTime");
+        ArrayList<TimeSlot> tsFreeTime = null;
+        Physician instance = new Physician();
+        instance.setTsFreeTime(tsFreeTime);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of geteExpertiseList method, of class Physician.
+     */
+    @Test
+    public void testGeteExpertiseList() {
+        System.out.println("geteExpertiseList");
+        Physician instance = new Physician();
+        ArrayList<Expertise> expResult = null;
+        ArrayList<Expertise> result = instance.geteExpertiseList();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of seteExpertiseList method, of class Physician.
+     */
+    @Test
+    public void testSeteExpertiseList() {
+        System.out.println("seteExpertiseList");
+        ArrayList<Expertise> eExpertiseList = null;
+        Physician instance = new Physician();
+        instance.seteExpertiseList(eExpertiseList);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

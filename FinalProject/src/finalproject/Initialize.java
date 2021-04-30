@@ -115,7 +115,7 @@ public class Initialize {
 
         for (int i = 0; i < totalPhysicians; i++) {
             tempPhysician = new Physician();
-            tempPhysician.populateWeek(workingHours);
+//            tempPhysician.populateWeek(workingHours);
             sIndex = String.format(".%02d.", i + 1);
             keyString = "physicians" + sIndex;
             System.out.println(keyString);

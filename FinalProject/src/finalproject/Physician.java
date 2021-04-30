@@ -115,50 +115,42 @@ public class Physician extends ClubMember {
         }
     }
 
-    public void populateWeek(String startEndHours) {
-        ArrayList<String> slots = new ArrayList<>();
-        int startHour;
-        int endHour;
-        String tempString;
-
-        startHour = Integer.parseInt(startEndHours.substring(0, 2));
-        endHour = Integer.parseInt(startEndHours.substring(5, 7));
-
-        System.out.println("startHour= " + startHour);
-        System.out.println("endHour= " + endHour);
-
-        Days days[] = Days.values();
-
-        for (Days day : days) {
-            if (day.equals(Days.SUN)) {
-                continue;
-            }
-            System.out.println("creating for " + day.name());
-            for (int i = startHour; i < endHour; i++) {
-                tempString = day.name() + String.format(" %02d00 %02d00", i, i + 1);
-                System.out.println(tempString);
-                slots.add(tempString);
-            }
-            for (String slot : slots) {
-                this.tTappointments.addTimeSlot(slot);
-            }
-        }
-    }
-
+//    public void populateWeek(String startEndHours) {
+//        ArrayList<String> slots = new ArrayList<>();
+//        int startHour;
+//        int endHour;
+//        String tempString;
+//
+//        startHour = Integer.parseInt(startEndHours.substring(0, 2));
+//        endHour = Integer.parseInt(startEndHours.substring(5, 7));
+//
+//        System.out.println("startHour= " + startHour);
+//        System.out.println("endHour= " + endHour);
+//
+//        Days days[] = Days.values();
+//
+//        for (Days day : days) {
+//            if (day.equals(Days.SUN)) {
+//                continue;
+//            }
+//            System.out.println("creating for " + day.name());
+//            for (int i = startHour; i < endHour; i++) {
+//                tempString = day.name() + String.format(" %02d00 %02d00", i, i + 1);
+//                System.out.println(tempString);
+//                slots.add(tempString);
+//            }
+//            for (String slot : slots) {
+//                this.tTappointments.addTimeSlot(slot);
+//            }
+//        }
+//    }
     public void setConsultationHours(String property) {
         String[] timeSlots = property.split(";");
-        Timestamp slotTimeStamp;
-
+        TimeSlot timeSlot;
 //        TimeSlot
         for (String strTimeSlot : timeSlots) {
-//            System.out.println(strTimeSlot);
-
-            for (TimeSlot timeSlot : this.tTappointments.getTsList()) {
-                slotTimeStamp = timeSlot.calcTimestamp(tTappointments.getBaseTimeStamp(), property);
-                if (timeSlot.getTimeStampStart().equals(slotTimeStamp)) {
-                    System.out.println("found");
-                }
-            }
+            timeSlot = new TimeSlot(tTappointments.getBaseTimeStamp(), strTimeSlot);
+            this.tsConsultationHours.add(timeSlot);
         }
 
         // convert to time stamp

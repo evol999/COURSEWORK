@@ -93,50 +93,33 @@ public class TimeSlotTest {
     }
 
     /**
-     * Test of getIsAvailable method, of class TimeSlot.
+     * Test of compareTo method, of class TimeSlot.
      */
     @Test
-    public void testGetIsAvailable() {
-        System.out.println("getIsAvailable");
+    public void testCompareTo() {
+        System.out.println("compareTo");
+        TimeSlot o = null;
         TimeSlot instance = null;
-        Boolean expResult = null;
-        Boolean result = instance.getIsAvailable();
+        int expResult = 0;
+        int result = instance.compareTo(o);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of setIsAvailable method, of class TimeSlot.
+     * Test of calcTimestamp method, of class TimeSlot.
      */
     @Test
-    public void testSetIsAvailable() {
-        System.out.println("setIsAvailable");
-        Boolean isAvailable = null;
+    public void testCalcTimestamp() {
+        System.out.println("calcTimestamp");
+        Timestamp baseTimeStamp = null;
+        String property = "";
         TimeSlot instance = null;
-        instance.setIsAvailable(isAvailable);
+        Timestamp expResult = null;
+        Timestamp result = instance.calcTimestamp(baseTimeStamp, property);
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getNewTimestamp method, of class TimeSlot.
-     */
-    @Test
-    public void testGetTimestamp() {
-        System.out.println("getTimestamp");
-//        Timestamp baseTimeStamp = null;
-        TimeTable table = new TimeTable();
-        int daysToAdd = 2;
-        int hour = 7;
-        int minute = 15;
-        TimeSlot instance = new TimeSlot(table.getBaseTimeStamp(), "MON 0700 0800");
-//        Timestamp expResult = null;
-//        Timestamp result = instance.getNewTimestamp(table.getBaseTimeStamp(), daysToAdd, hour, minute);
-//        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        System.out.println("Base date: " + table.getBaseTimeStamp().toString());
-//        System.out.println("result: " + result.toString());
         fail("The test case is a prototype.");
     }
 
