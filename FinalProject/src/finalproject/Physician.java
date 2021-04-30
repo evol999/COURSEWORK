@@ -5,6 +5,8 @@
  */
 package finalproject;
 
+import finalproject.TimeSlot.Days;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
@@ -12,6 +14,29 @@ import java.util.ArrayList;
  * @author evol9
  */
 public class Physician extends ClubMember {
+
+    /**
+     * @return the tsFreeTime
+     */
+    public ArrayList<TimeSlot> getTsFreeTime() {
+        return tsFreeTime;
+    }
+
+    /**
+     * @param tsFreeTime the tsFreeTime to set
+     */
+    public void setTsFreeTime(ArrayList<TimeSlot> tsFreeTime) {
+        this.tsFreeTime = tsFreeTime;
+    }
+
+    private ArrayList<Expertise> eExpertiseList;
+    private ArrayList<TimeSlot> tsFreeTime;
+    private String room;
+
+    public Physician() {
+        eExpertiseList = new ArrayList<>();
+        tsFreeTime = new ArrayList<>();
+    }
 
     /**
      * @return the room
@@ -27,25 +52,18 @@ public class Physician extends ClubMember {
         this.room = room;
     }
 
-    private ArrayList<Expertise> expertiseList;
-    private String room;
-
-    public Physician() {
-        expertiseList = new ArrayList<Expertise>();
+    /**
+     * @return the eExpertiseList
+     */
+    public ArrayList<Expertise> geteExpertiseList() {
+        return eExpertiseList;
     }
 
     /**
-     * @return the expertiseList
+     * @param eExpertiseList the eExpertiseList to set
      */
-    public ArrayList<Expertise> getExpertiseList() {
-        return expertiseList;
-    }
-
-    /**
-     * @param expertiseList the expertiseList to set
-     */
-    public void setExpertiseList(ArrayList<Expertise> expertiseList) {
-        this.expertiseList = expertiseList;
+    public void seteExpertiseList(ArrayList<Expertise> eExpertiseList) {
+        this.eExpertiseList = eExpertiseList;
     }
 
     void parseTimeSlots(String property) {
@@ -71,7 +89,7 @@ public class Physician extends ClubMember {
                 indexEndTreatments = expertise.trim().indexOf(']');
                 addTreatments(tempExpertise, expertise.trim().substring(indexTreatments + 1, indexEndTreatments));
             }
-            expertiseList.add(tempExpertise);
+            eExpertiseList.add(tempExpertise);
         }
 
 //        System.out.println("Unsorted array start:");
@@ -94,4 +112,58 @@ public class Physician extends ClubMember {
             System.out.println("added treatment: " + treatment.trim());
         }
     }
+
+    public void populateWeek(String startEndHours) {
+        ArrayList<String> slots = new ArrayList<>();
+        int startHour;
+        int endHour;
+        String tempString;
+
+        startHour = Integer.parseInt(startEndHours.substring(0, 2));
+        endHour = Integer.parseInt(startEndHours.substring(5, 7));
+
+        System.out.println("startHour= " + startHour);
+        System.out.println("endHour= " + endHour);
+
+        Days days[] = Days.values();
+
+        for (Days day : days) {
+            if (day.equals(Days.SUN)) {
+                continue;
+            }
+            System.out.println("creating for " + day.name());
+            for (int i = startHour; i < endHour; i++) {
+                tempString = day.name() + String.format(" %02d00 %02d00", i, i + 1);
+                System.out.println(tempString);
+                slots.add(tempString);
+            }
+            for (String slot : slots) {
+                this.timeTable.addTimeSlot(slot);
+            }
+        }
+    }
+
+    public void setConsultationHours(String property) {
+        String[] timeSlots = property.split(";");
+        Timestamp slotTimeStamp;
+
+//        TimeSlot
+        for (String strTimeSlot : timeSlots) {
+//            System.out.println(strTimeSlot);
+
+            for (TimeSlot timeSlot : this.timeTable.getTsList()) {
+                slotTimeStamp = timeSlot.calcTimestamp(timeTable.getBaseTimeStamp(), property);
+                if (timeSlot.getTimeStampStart().equals(slotTimeStamp)) {
+                    System.out.println("found");
+                }
+            }
+        }
+
+        // convert to time stamp
+        // search slot
+        // if found remove add two with flag set
+        // sort timeSlots
+        // if not found add two
+    }
+
 }

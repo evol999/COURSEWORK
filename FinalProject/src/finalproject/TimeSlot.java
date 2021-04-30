@@ -16,8 +16,8 @@ public class TimeSlot implements Comparable<TimeSlot> {
 
     private Timestamp timeStampStart;
     private Timestamp timeStampEnd;
-    private Boolean isAvailable;
-    private Boolean isConsultation;
+//    private Boolean isAvailable;
+//    private Boolean isConsultation;
 
     TimeSlot(Timestamp baseTimeStamp, String strValue) {
         int hour;
@@ -32,34 +32,31 @@ public class TimeSlot implements Comparable<TimeSlot> {
         hour = Integer.parseInt(strValue.substring(4, 6));
         minute = Integer.parseInt(strValue.substring(6, 8));
 
-        this.timeStampStart = getNewTimestamp(baseTimeStamp, daysToAdd, hour, minute);
-//        System.out.println("timeStampStart: " + this.timeStampStart);
+        this.timeStampStart = calcNewTimestamp(baseTimeStamp, daysToAdd, hour, minute);
+        System.out.println("timeStampStart: " + this.timeStampStart);
 
         hour = Integer.parseInt(strValue.substring(9, 11));
         minute = Integer.parseInt(strValue.substring(11, 13));
 
-        this.timeStampEnd = getNewTimestamp(baseTimeStamp, daysToAdd, hour, minute);
-//        System.out.println("timeStampEnd: " + this.timeStampEnd);
+        this.timeStampEnd = calcNewTimestamp(baseTimeStamp, daysToAdd, hour, minute);
+        System.out.println("timeStampEnd: " + this.timeStampEnd);
 
-        this.isAvailable = Boolean.TRUE;
-        this.isConsultation = Boolean.FALSE;
-
+//        this.isAvailable = Boolean.TRUE;
+//        this.isConsultation = Boolean.FALSE;
     }
 
     /**
      * @return the isConsultation
      */
-    public Boolean getIsConsultation() {
-        return isConsultation;
-    }
-
+//    public Boolean getIsConsultation() {
+//        return isConsultation;
+//    }
     /**
      * @param isConsultation the isConsultation to set
      */
-    public void setIsConsultation(Boolean isConsultation) {
-        this.isConsultation = isConsultation;
-    }
-
+//    public void setIsConsultation(Boolean isConsultation) {
+//        this.isConsultation = isConsultation;
+//    }
     /**
      * @return the timeStampStart
      */
@@ -91,17 +88,15 @@ public class TimeSlot implements Comparable<TimeSlot> {
     /**
      * @return the isAvailable
      */
-    public Boolean getIsAvailable() {
-        return isAvailable;
-    }
-
+//    public Boolean getIsAvailable() {
+//        return isAvailable;
+//    }
     /**
      * @param isAvailable the isAvailable to set
      */
-    public void setIsAvailable(Boolean isAvailable) {
-        this.isAvailable = isAvailable;
-    }
-
+//    public void setIsAvailable(Boolean isAvailable) {
+//        this.isAvailable = isAvailable;
+//    }
     private int getDaysToAdd(String day) {
         int retVal;
         Days enumDay = Days.valueOf(day);
@@ -133,7 +128,7 @@ public class TimeSlot implements Comparable<TimeSlot> {
         return retVal;
     }
 
-    private Timestamp getNewTimestamp(Timestamp baseTimeStamp, int daysToAdd, int hour, int minute) {
+    private Timestamp calcNewTimestamp(Timestamp baseTimeStamp, int daysToAdd, int hour, int minute) {
 
         Timestamp retTimestamp;
         Calendar calTimestamp = Calendar.getInstance();
@@ -143,7 +138,7 @@ public class TimeSlot implements Comparable<TimeSlot> {
         calTimestamp.set(Calendar.MINUTE, minute);
 //        baseTimeStamp.setTime(calTimestamp.getTime().getTime());
         retTimestamp = new Timestamp(calTimestamp.getTime().getTime());
-        System.out.println("retTimestamp: " + retTimestamp);
+//        System.out.println("retTimestamp: " + retTimestamp);
         return retTimestamp;
 //        return new Timestamp(calTimestamp.getTime().getTime());
 
@@ -161,6 +156,22 @@ public class TimeSlot implements Comparable<TimeSlot> {
         }
 
         return retVal;
+    }
+
+    public Timestamp calcTimestamp(Timestamp baseTimeStamp, String property) {
+        int hour;
+        int minute;
+        int daysToAdd;
+        Timestamp retVal;
+
+        daysToAdd = getDaysToAdd(property.substring(0, 3));
+        hour = Integer.parseInt(property.substring(4, 6));
+        minute = Integer.parseInt(property.substring(6, 8));
+
+        retVal = calcNewTimestamp(baseTimeStamp, daysToAdd, hour, minute);
+        System.out.println("timeStampStart: " + retVal);
+        return retVal;
+
     }
 
     public enum Days {
