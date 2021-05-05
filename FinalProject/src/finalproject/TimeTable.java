@@ -10,6 +10,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 
 /**
@@ -110,5 +111,15 @@ public class TimeTable {
 
         // convert to arraylist
         // set as availbe slot
+    }
+
+    Timestamp incTimestampOneDay(Timestamp baseTimeStamp) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(baseTimeStamp);
+        cal.add(Calendar.DAY_OF_WEEK, 1);
+        baseTimeStamp.setTime(cal.getTime().getTime()); // or
+        baseTimeStamp = new Timestamp(cal.getTime().getTime());
+        return baseTimeStamp;
+
     }
 }
