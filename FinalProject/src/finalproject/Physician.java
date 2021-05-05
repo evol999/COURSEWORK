@@ -19,11 +19,26 @@ public class Physician extends ClubMember {
     private ArrayList<TimeSlot> tsFreeTime;
     private ArrayList<TimeSlot> tsConsultationHours;
     private String room;
+    private String workingHours;
 
     public Physician() {
         eExpertiseList = new ArrayList<>();
         tsFreeTime = new ArrayList<>();
         tsConsultationHours = new ArrayList<>();
+    }
+
+    /**
+     * @return the workingHours
+     */
+    public String getWorkingHours() {
+        return workingHours;
+    }
+
+    /**
+     * @param workingHours the workingHours to set
+     */
+    public void setWorkingHours(String workingHours) {
+        this.workingHours = workingHours;
     }
 
     /**
