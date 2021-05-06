@@ -11,14 +11,31 @@ import java.util.ArrayList;
  *
  * @author evol9
  */
-class UserInput {
+class AppFlow {
 
-    void loop() {
+    /**
+     * @return the selection
+     */
+    public Processes getSelection() {
+        return selection;
+    }
+
+    /**
+     * @param selection the selection to set
+     */
+    public void setSelection(Processes selection) {
+        this.selection = selection;
+    }
+
+    private Processes selection;
+
+    void runFlow() {
         Menu menuUser = new Menu();
         menuUser.setText("Are you a Visitor or a Patient?");
         menuUser.setOption("Patient");  //  1.
         menuUser.setOption("Visitor");  //  2.
         menuUser.setOption("Administrator");  //  3.
+        menuUser.setOption("Exit");  //  4.
         menuUser.run();
         if (1 == menuUser.getSelection()) {
             processUser();
@@ -87,10 +104,20 @@ class UserInput {
     }
 
     private void bookByPhysician() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        setSelection(Processes.BOOK_BY_PHY);
     }
 
     private void processAdmin() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    void bookByPhysician(ArrayList<Physician> physicians) {
+
+    }
+
+    public enum Processes {
+        EXIT,
+        BOOK_BY_PHY
+    }
+
 }

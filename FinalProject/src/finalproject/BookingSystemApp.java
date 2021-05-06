@@ -26,8 +26,18 @@ public class BookingSystemApp {
         if (!init.isOK()) {
             System.out.println("There was a problem during initialization");
         }
-        UserInput uI = new UserInput();
-        uI.loop();
+        physicians = init.getPhysicians();
+
+        AppFlow uI = new AppFlow();
+        uI.runFlow();
+        switch (uI.getSelection()) {
+            case BOOK_BY_PHY:
+                uI.bookByPhysician(physicians);
+            case EXIT:
+            default:
+                System.out.println("There was a problem during initialization");
+        }
+
 //        physicians = init.getPhysicians();
 //        for (Physician test : physicians) {
 //            System.out.println("Name: " + test.fullName);
