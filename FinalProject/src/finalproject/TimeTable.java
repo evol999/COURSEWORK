@@ -118,8 +118,45 @@ public class TimeTable {
         cal.setTime(baseTimeStamp);
         cal.add(Calendar.DAY_OF_WEEK, 1);
         baseTimeStamp.setTime(cal.getTime().getTime()); // or
-        baseTimeStamp = new Timestamp(cal.getTime().getTime());
+//        baseTimeStamp = new Timestamp(cal.getTime().getTime());
         return baseTimeStamp;
 
+    }
+
+    Timestamp incTimestampOneWeek(Timestamp baseTimeStamp) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(baseTimeStamp);
+        cal.add(Calendar.DAY_OF_WEEK, 7);
+        baseTimeStamp.setTime(cal.getTime().getTime()); // or
+//        baseTimeStamp = new Timestamp(cal.getTime().getTime());
+        return baseTimeStamp;
+
+    }
+
+    ArrayList<TimeSlot> removeSlot(ArrayList<TimeSlot> tTable1, TimeSlot timeSlot) {
+
+//        ArrayList<TimeSlot> tTableBig;
+//        ArrayList<TimeSlot> tTableSmall;
+        ArrayList<TimeSlot> tTableResult = new ArrayList<>();
+
+//        if(tTable2.size() < tTable1.size()) {
+//            tTableSmall = new ArrayList<>(tTable2);
+//            tTableBig = new ArrayList<>(tTable1);
+//        } else {
+//            tTableSmall = new ArrayList<>(tTable1);
+//            tTableBig = new ArrayList<>(tTable2);
+//
+//        }
+        for (TimeSlot timeSlotl : tTable1) {
+            if (timeSlot.isIncludedIn(timeSlotl)) {
+                // Split timeslot
+                tTableResult.addAll(timeSlotl.substract(timeSlot));
+                // add splited
+            } else {
+                tTableResult.add(timeSlotl);
+            }
+
+        }
+        return tTableResult;
     }
 }

@@ -168,7 +168,7 @@ public class PhysicianTest {
 //        instance.populateWeek("0900 1700");
         instance.setConsultationHours(property);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -182,7 +182,7 @@ public class PhysicianTest {
         ArrayList<TimeSlot> result = instance.getTsFreeTime();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -195,7 +195,7 @@ public class PhysicianTest {
         Physician instance = new Physician();
         instance.setTsFreeTime(tsFreeTime);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -209,7 +209,7 @@ public class PhysicianTest {
         ArrayList<Expertise> result = instance.geteExpertiseList();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -221,6 +221,80 @@ public class PhysicianTest {
         ArrayList<Expertise> eExpertiseList = null;
         Physician instance = new Physician();
         instance.seteExpertiseList(eExpertiseList);
+        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getWorkingHours method, of class Physician.
+     */
+    @Test
+    public void testGetWorkingHours() {
+        System.out.println("getWorkingHours");
+        Physician instance = new Physician();
+        String expResult = "";
+        String result = instance.getWorkingHours();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setWorkingHours method, of class Physician.
+     */
+    @Test
+    public void testSetWorkingHours() {
+        System.out.println("setWorkingHours");
+        String workingHours = "";
+        Physician instance = new Physician();
+        instance.setWorkingHours(workingHours);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setFreeTime method, of class Physician.
+     */
+    @Test
+    public void testSetFreeTime() {
+        System.out.println("setFreeTime");
+        Physician instance = new Physician();
+        instance.setWorkingHours("0900 1700");
+        instance.setFreeTime();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of updateFreeTime method, of class Physician.
+     */
+    @Test
+    public void testUpdateFreeTime() {
+        System.out.println("updateFreeTime");
+        Physician instance = new Physician();
+        instance.updateFreeTime();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getFreeTime method, of class Physician.
+     */
+    @Test
+    public void testGetFreeTime() {
+        System.out.println("getFreeTime");
+        Physician instance = new Physician();
+        instance.setFullName("Beto Beto");
+        instance.setRoom("SUITE SUITE");
+        ArrayList<String> expResult = null;
+        instance.setWorkingHours("0900 1700");
+        instance.setConsultationHours("MON 0900 1000; TUE 1000 1100");
+        instance.setFreeTime();
+        ArrayList<String> result = null;
+        result = instance.getFreeTime();
+        System.out.println(result);
+        System.out.println("==================================");
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

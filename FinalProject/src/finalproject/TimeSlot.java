@@ -6,6 +6,7 @@
 package finalproject;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -43,6 +44,11 @@ public class TimeSlot implements Comparable<TimeSlot> {
 
 //        this.isAvailable = Boolean.TRUE;
 //        this.isConsultation = Boolean.FALSE;
+    }
+
+    TimeSlot(TimeSlot aThis) {
+        this.timeStampStart = aThis.timeStampStart;
+        this.timeStampEnd = aThis.timeStampEnd;
     }
 
     /**
@@ -172,6 +178,43 @@ public class TimeSlot implements Comparable<TimeSlot> {
         System.out.println("timeStampStart: " + retVal);
         return retVal;
 
+    }
+
+    boolean isIncludedIn(TimeSlot timeSlot) {
+        boolean retVal = Boolean.FALSE;
+
+        if (timeSlot.timeStampStart.equals(this.timeStampStart) || timeSlot.timeStampStart.before(this.timeStampStart)) {
+            if (timeSlot.timeStampEnd.equals(this.timeStampEnd) || timeSlot.timeStampEnd.after(this.timeStampEnd)) {
+                retVal = Boolean.TRUE;
+            }
+        }
+        return retVal;
+    }
+
+    ArrayList<TimeSlot> substract(TimeSlot timeSlot) {
+        ArrayList<TimeSlot> tsResult = new ArrayList<>();
+        TimeSlot tsBefore = null;
+        TimeSlot tsAfter = null;
+
+        if (!this.timeStampStart.equals(timeSlot.timeStampStart)) {
+            tsBefore = new TimeSlot(this);
+            tsBefore.timeStampEnd = timeSlot.timeStampStart;
+        }
+
+        if (!this.timeStampEnd.equals(timeSlot.timeStampEnd)) {
+            tsAfter = new TimeSlot(this);
+            tsAfter.timeStampStart = timeSlot.timeStampEnd;
+        }
+
+        if (null != tsBefore) {
+            tsResult.add(tsBefore);
+        }
+
+        if (null != tsAfter) {
+            tsResult.add(tsAfter);
+        }
+
+        return tsResult;
     }
 
     public enum Days {

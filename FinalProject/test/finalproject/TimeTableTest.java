@@ -105,4 +105,47 @@ public class TimeTableTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+
+    /**
+     * Test of parseTimeSlots method, of class TimeTable.
+     */
+    @Test
+    public void testParseTimeSlots() {
+        System.out.println("parseTimeSlots");
+        String property = "";
+        TimeTable instance = new TimeTable();
+        instance.parseTimeSlots(property);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of incTimestampOneDay method, of class TimeTable.
+     */
+    @Test
+    public void testIncTimestampOneDay() {
+        System.out.println("incTimestampOneDay");
+        Timestamp baseTimeStamp = null;
+        TimeTable instance = new TimeTable();
+        Timestamp expResult = null;
+        Timestamp result = instance.incTimestampOneDay(baseTimeStamp);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of incTimestampOneWeek method, of class TimeTable.
+     */
+    @Test
+    public void testIncTimestampOneWeek() {
+        System.out.println("incTimestampOneWeek");
+        Timestamp baseTimeStamp = null;
+        TimeTable instance = new TimeTable();
+        Timestamp expResult = null;
+        Timestamp result = instance.incTimestampOneWeek(baseTimeStamp);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
 }

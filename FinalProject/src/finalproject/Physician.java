@@ -6,8 +6,11 @@
 package finalproject;
 
 import finalproject.TimeSlot.Days;
+
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -149,8 +152,8 @@ public class Physician extends ClubMember {
 //                continue;
 //            }
 //            System.out.println("creating for " + day.name());
-//            for (int i = startHour; i < endHour; i++) {
-//                tempString = day.name() + String.format(" %02d00 %02d00", i, i + 1);
+//            for (int j = startHour; j < endHour; j++) {
+//                tempString = day.name() + String.format(" %02d00 %02d00", j, j + 1);
 //                System.out.println(tempString);
 //                slots.add(tempString);
 //            }
@@ -173,6 +176,65 @@ public class Physician extends ClubMember {
         // if found remove add two with flag set
         // sort timeSlots
         // if not found add two
+    }
+
+    public void setFreeTime() {
+        TimeSlot tsTemp;
+        Timestamp baseTimeStamp = tTappointments.getBaseTimeStamp();
+        Days[] aDays;
+        String strDay;
+        String strInput;
+
+        aDays = Days.values();
+
+//        populate weeks
+        for (int i = 0; i < 4; i++) {
+            // populate days
+            for (int j = 1; j < 7; j++) {
+                strDay = aDays[j].toString();
+                System.out.println("i: " + j);
+                System.out.println("baseTimeStamp: " + baseTimeStamp);
+                strInput = strDay + " " + workingHours;
+                System.out.println("strInput: " + strInput);
+                tsTemp = new TimeSlot(baseTimeStamp, strInput);
+                tsFreeTime.add(tsTemp);
+            }
+            baseTimeStamp = tTappointments.incTimestampOneWeek(baseTimeStamp);
+        }
+        for (TimeSlot timeslot : tsConsultationHours) {
+            tsFreeTime = tTappointments.removeSlot(tsFreeTime, timeslot);
+        }
+    }
+
+    public ArrayList<String> getFreeTime() {
+        ArrayList<String> timeInfo = new ArrayList<>();
+        String formattedDate;
+        String strTemp;
+
+        timeInfo.add(this.fullName);
+        timeInfo.add(this.room);
+        timeInfo.add("MONTH DAY FROM TO");
+        for (TimeSlot timeSlot : this.tsFreeTime) {
+//            strTemp = timeSlot.getTimeStampStart().toString() + timeSlot.getTimeStampEnd().toString();
+            System.out.println(timeSlot.getTimeStampStart().toString() + timeSlot.getTimeStampEnd().toString());
+//            Date date = new Date();
+//            date.setTime(timeSlot.getTimeStampStart().getTime());
+            formattedDate = new SimpleDateFormat("EE ").format(timeSlot.getTimeStampStart().getTime());
+            strTemp = new SimpleDateFormat("MM/dd").format(timeSlot.getTimeStampStart().getTime());
+            formattedDate += strTemp;
+            formattedDate += " FROM ";
+            strTemp = new SimpleDateFormat("HH:mm").format(timeSlot.getTimeStampStart().getTime());
+            formattedDate += strTemp + " TO ";
+            strTemp = new SimpleDateFormat("HH:mm").format(timeSlot.getTimeStampEnd().getTime());
+            formattedDate += strTemp;
+//            timeInfo.add(strTemp);
+            timeInfo.add(formattedDate);
+        }
+        return timeInfo;
+    }
+
+    public void updateFreeTime() {
+
     }
 
 }
