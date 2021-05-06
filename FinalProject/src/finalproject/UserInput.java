@@ -13,7 +13,7 @@ import java.util.Scanner;
  *
  * @author evol9
  */
-class Menu {
+class UserInput {
 
     /**
      * @return the selection
@@ -28,7 +28,7 @@ class Menu {
     private ArrayList<String> textToDisplay;
     private ArrayList<String> options;
 
-    public Menu() {
+    public UserInput() {
         input = new Scanner(System.in);
         textToDisplay = new ArrayList<>();
         options = new ArrayList<>();

@@ -30,7 +30,7 @@ class AppFlow {
     private Processes selection;
 
     void runFlow() {
-        Menu menuUser = new Menu();
+        UserInput menuUser = new UserInput();
         menuUser.setText("Are you a Visitor or a Patient?");
         menuUser.setOption("Patient");  //  1.
         menuUser.setOption("Visitor");  //  2.
@@ -53,7 +53,7 @@ class AppFlow {
     }
 
     private void processUser() {
-        Menu menuUser = new Menu();
+        UserInput menuUser = new UserInput();
         menuUser.setText("Are you registered?");
         menuUser.setOption("Yes");  //  1.
         menuUser.setOption("No");  //  2.
@@ -72,7 +72,7 @@ class AppFlow {
         String name = "Beto", greeting;
 
         greeting = "Hello Mr. " + name + " what would you like to do?";
-        Menu menuUser = new Menu();
+        UserInput menuUser = new UserInput();
         menuUser.setText(greeting);
         menuUser.setOption("Book appointment by area of expertise");  //  1.
         menuUser.setOption("Book appointment by physician");  //  2.
@@ -109,10 +109,6 @@ class AppFlow {
 
     private void processAdmin() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void bookByPhysician(ArrayList<Physician> physicians) {
-
     }
 
     public enum Processes {

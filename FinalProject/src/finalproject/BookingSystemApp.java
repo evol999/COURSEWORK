@@ -29,10 +29,12 @@ public class BookingSystemApp {
         physicians = init.getPhysicians();
 
         AppFlow uI = new AppFlow();
+        Execution exec = new Execution();
         uI.runFlow();
+
         switch (uI.getSelection()) {
             case BOOK_BY_PHY:
-                uI.bookByPhysician(physicians);
+                exec.bookByPhysician(physicians);
             case EXIT:
             default:
                 System.out.println("There was a problem during initialization");
